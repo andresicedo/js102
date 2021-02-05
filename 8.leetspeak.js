@@ -29,12 +29,22 @@ const subs = {
     'T': 7
 }
 function leetspeak(string) {
+    //create an empty array
+    let arr = [];
     //create an empty result string
-    let resutl = '';
-    //iterate over the string given
-    for(let i = 0; i < string.length; i++) {
-        
+    let result = '';
+    //turn string to uppercase letters and split at ''
+    let upper = string.toUpperCase().split('');
+    //iterate over the subs objet
+    for(let i = 0; i < upper.length; i++) {
+        if(subs[upper[i]]) {
+            arr.push(subs[upper[i]]);
+        }
+        else {
+            arr.push(upper[i]);
+        }
     }
+    console.log(arr)
  }
 
 leetspeak('Leet');
