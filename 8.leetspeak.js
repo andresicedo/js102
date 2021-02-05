@@ -31,20 +31,21 @@ const subs = {
 function leetspeak(string) {
     //create an empty array
     let arr = [];
-    //create an empty result string
-    let result = '';
     //turn string to uppercase letters and split at ''
     let upper = string.toUpperCase().split('');
     //iterate over the subs objet
     for(let i = 0; i < upper.length; i++) {
         if(subs[upper[i]]) {
-            arr.push(subs[upper[i]]);
+            arr.push(subs[upper[i]].toString());
         }
         else {
             arr.push(upper[i]);
         }
     }
-    console.log(arr)
+    //join the array and lowercase
+    let result = arr.join('').toLowerCase();
+    return result;
  }
 
-leetspeak('Leet');
+var output = leetspeak('Leet');//l337
+console.log(output);
