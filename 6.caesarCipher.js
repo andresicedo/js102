@@ -13,17 +13,35 @@ cipher('Genius without education is like silver in the mine', 13);
 ```
 */
 function cipher(string, offset) {
-    // let lowerCase = [' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 
-    // 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 
-    // 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    let newCipher = [];
-    let splitted = string.split("");
-    let lowerCase = {0: " ",1: "a",2: "b",3: "c",4: "d",5: "e",6: "f",
-        7: "g",8: "h",9: "i",10: "j",11: "k",12: "l",13: "m",14: "n",
-        15: "o",16: "p",17: "q",18: "r",19: "s",20: "t",21: "u",22: "v",
-        23: "w",24: "x",25: "y",26: "z",
+    const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    let result = ''
+    for (let i = 0; i < string.length; i++) {
+        //turn i into lowercase
+      const currentLetter = string[i].toLowerCase(); 
+      //find index of current letter in alphabet
+      const currentIndex = alphabet.indexOf(currentLetter);
+      //find index of new character, modulo wraps to beginning when > 26
+      const newIndex = (currentIndex + offset) % 26; 
+      //find new letter in alphabet via index
+      const newLetter = alphabet[newIndex]; 
+      // if we could not find the current letter, it was a symbol
+      if (currentIndex === -1) { 
+        // so just use that
+        result += currentLetter; 
+        // otherwise
+      } else { 
+        // add the new character to the result
+        result += newLetter; 
+      }
     }
-    
-}
+    let newResult = result.split("")
+    for(let i = 0; i < newResult.length; i++) {
+        newResult[0] = newResult[0].toUpperCase();
+        } 
+    let caps = newResult.join('');
+    console.log(caps); // print the result
+  }
 
 cipher('Genius without education is like silver in the mine', 13);
+//'Travhf jvgubhg rqhpngvba vf yvxr fvyire va gur zvar'
+
